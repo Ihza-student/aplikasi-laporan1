@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-gray-100 text-gray-900 font-sans;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 0 !important;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    height: auto !important;
+    /* Allow growing to multiple pages */
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    /* Allow scrolling/pagination */
+    background: white;
+  }
+
+  /* Reset Parent Containers to prevent clipping */
+  #app-root,
+  #preview-pane {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    position: static !important;
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-area {
+    display: block !important;
+    position: relative;
+    /* Changed from fixed to relative to allow absolute children */
+    width: 210mm;
+    min-height: 297mm;
+    /* Allow growth */
+    height: auto !important;
+    /* Dynamic height */
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: scale(1);
+    /* Ensure no random scaling */
+    background: white;
+    overflow: visible !important;
+    /* Allow overflow to new pages */
+  }
+
+  /* Padding inside the print area handle by the div itself (p-[20mm]) */
+
+  /* Ensure colors and shadows are accurate */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
